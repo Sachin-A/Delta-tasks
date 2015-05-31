@@ -2,9 +2,15 @@
 	<head>
 		<style>
 
-			button
+			#b1
 			{
-			background-color: #ffff12;
+			width: 25%; 
+			margin:50px 50px;
+			padding-top:50px;
+			padding-bottom:50px;
+			}
+                        #b2
+			{
 			width: 25%; 
 			margin:50px 50px;
 			padding-top:50px;
@@ -22,14 +28,19 @@
 		{ 
 		document.getElementById("b1").style.backgroundColor= '#' + ('00000' + (Math.random() * 16777216 << 0 ).toString(16)).substr(-6);
 		}
+                function Randomize() 
+		{ 
+		document.getElementById("b1").style.backgroundColor= '#' + ('00000' + (Math.random() * 16777216 << 0 ).toString(16)).substr(-6);
+                document.getElementById("b2").style.backgroundColor= '#' + ('00000' + (Math.random() * 16777216 << 0 ).toString(16)).substr(-6);
+		}
 	</script>
  
 	</head> 
 
-	<body> 
-    <button type= "button" value="button" id="b1" onclick = "Randomize1()">
+	<body onload = "Randomize()"> 
+    <button type= "button" value="button"  id="b1" onclick = "Randomize1()">
     </button>
-	<button type= "button" value="button" id="b2" onclick = "Randomize2()"> 
+	<button type= "button" value="button"  id="b2" onclick = "Randomize2()"> 
     </button>
 	</body>
 
