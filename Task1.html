@@ -1,21 +1,38 @@
-<html><head>
-    <style>
-     button
-      {
-      background-color:#FF0000;
-      width:25%;
-      margin:50px 50px;
-      padding-top:50px;
-      padding-bottom:50px;
-      }
-    </style>
-  </head>
-  <body>
-    <script type="text/javascript">
-    function randomize() {
-    document.getElementById('b1').style.backgroundColor='#' + ('00000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6);
-}
-</script>
-    <button id='b1' onclick="randomize();"></button>
-    <button onclick="randomize();"></button>
-</body></html>
+<html>
+	<head>
+		<style>
+
+			button
+			{
+			background-color: #ffff12;
+			width: 25%; 
+			margin:50px 50px;
+			padding-top:50px;
+			padding-bottom:50px;
+			}
+
+		</style>
+
+	<script type="text/javascript"> 
+		function Randomize1() 
+		{ 
+		document.getElementById("b2").style.backgroundColor= '#' + ('00000' + (Math.random() * 16777216 << 0 ).toString(16)).substr(-6);
+		}
+		function Randomize2() 
+		{ 
+		document.getElementById("b1").style.backgroundColor= '#' + ('00000' + (Math.random() * 16777216 << 0 ).toString(16)).substr(-6);
+		}
+	</script>
+ 
+	</head> 
+
+	<body> 
+    <button type= "button" value="button" id="b1" onclick = "Randomize1()">
+    </button>
+	<button type= "button" value="button" id="b2" onclick = "Randomize2()"> 
+    </button>
+	</body>
+
+</html>
+
+
