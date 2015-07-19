@@ -1,0 +1,34 @@
+<!doctype HTML>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+ <form id="userdata" enctype="multipart/form-data" method="post" action="registration.php">
+
+  <label for="name">Name</label><br/>
+  <input id="name" name="name" type="text" value="" required /><br/><br/>
+ 
+  <label for="rollno">Roll Number</label><br/>
+  <input id="rollno" type="number" name="rollno" value="" required /><br/>
+
+  <label for="department">Department</label><br/>
+  <input id="department" type="text" name="department" required ><br/><br/>
+
+  <label for="year">Year Of Study</label><br/>
+  <input id="year" type="number" name="year" placeholder="yyyy for ex: 2015" required ><br/><br/>
+
+  <label for="email">Email ID</label><br/>
+  <input id="email" type="email" name="email" value="" placeholder="name@email.com" required /><br/><br/>
+
+  <label for="password">Password</label><br/>
+  <input id="password" type="password" name="password" value="" placeholder="alphanumerics only" required /><br/><br/>
+  
+  <label for="fileupload">User Image</label><br/>
+  <input id="fileupload" name="userpic" type="file" accept="image/gif,image/jpeg,image/jpg,image/png"/><br/><br/>
+  
+  <input type="submit" value="submit" name="submit" />
+
+ </form>
+</body>
+</html>
