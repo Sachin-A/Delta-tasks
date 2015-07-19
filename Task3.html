@@ -1,0 +1,175 @@
+<!doctype HTML>
+<head>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+ <style>
+body {
+    background-color: Crimson;
+    padding:20px;
+}
+#canvas {
+    background-color: white;
+}
+ </style> 
+<script>
+$(function()
+ {
+   var canvas = document.getElementById("canvas");
+   var ctx = canvas.getContext("2d");
+   ctx.fillStyle = "SlateBlue";
+
+   var ballX = 70;
+   var ballY = 75;
+   var ballRadius = 50;
+
+   draw();
+
+function draw() 
+{
+
+    // clear the canvas for the next frame
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // draw a ball that the use can move with left/right/up/down arrow keys
+  ballX = localStorage.getItem("ballX");
+        if (ballX == null || ballX == "null")
+        {
+          ballX = 70;
+        } 
+        else 
+        {
+          ballX = parseInt(ballX);
+        }
+  ballY = localStorage.getItem("ballY"); 
+        if (ballY == null || ballY == "null")
+        {
+          ballY = 75;
+        } 
+        else 
+        {
+          ballY = parseInt(ballY);
+        }
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2, false);
+    ctx.closePath();
+    ctx.fill();
+
+}
+
+
+// Handling command keys
+function keyDownHandler(event) 
+{
+
+    // get which key the user pressed
+    var key = event.which;
+
+    // Let keypress handle displayable characters
+    if (key > 46) 
+    {
+        return;
+    }
+
+    switch (key) {
+    case 37:
+            // left key
+
+            // move the ball 1 left by subtracting 1 from ballX
+            ballX -= 4;
+
+            // calc the ball's left edge
+            var ballLeft = ballX - ballRadius;
+
+            // Keep the ball from moving through the left wall
+            if (ballLeft <= 0) 
+            {
+                ballX = ballRadius;
+            }
+            
+            localStorage.setItem("ballX", ballX);
+            localStorage.setItem("ballY", ballY);
+            
+            break;
+    
+    case 38:
+            // up key
+
+            // move the ball 1 up by subtracting 1 from ballY
+            ballY -= 4;
+
+            // calc the ball's upper edge
+            var ballup = ballY - ballRadius;
+
+            // Keep the ball from moving through the left wall
+            if (ballup <= 0) 
+            {
+                ballY = ballRadius;
+            }
+            
+            localStorage.setItem("ballX", ballX);
+            localStorage.setItem("ballY", ballY);
+            
+            break;
+        
+    case 39:
+            // right key
+
+            // move the ball 1 right by adding 1 to ballX
+            ballX += 4;
+
+            // calc the ball's right edge
+            var ballRight = ballX + ballRadius;
+
+            // Keep the ball from moving through the right wall
+            if (ballRight >= canvas.width) {
+                ballX = canvas.width - ballRadius;
+            }
+            
+            localStorage.setItem("ballX", ballX);
+            localStorage.setItem("ballY", ballY);
+            
+            break;
+        
+    case 40:
+            // down key
+
+            // move the ball 1 down by adding 1 to ballY
+            ballY += 4;
+
+            // calc the ball's down edge
+            var balldown = ballY + ballRadius;
+
+            // Keep the ball from moving through the down wall
+            if (balldown >= canvas.height) {
+                ballY = canvas.height - ballRadius;
+            }
+         
+            localStorage.setItem("ballX", ballX);
+            localStorage.setItem("ballY", ballY);
+            
+            break;
+            
+    default:
+            break;
+         
+    }
+
+    // redraw everything
+    draw();
+
+}
+
+// Listen for when the user presses a key down
+window.addEventListener("keydown", keyDownHandler, true);
+});
+</script> 
+
+</head>
+
+<body>
+<p align="center">Click in the red box to get keyboard focus</p>
+<p align="center">Move ball with left, up, right and down arrow keys</p>
+<canvas id="canvas" width=1200 height=400></canvas>
+</body>
+
+</html>
