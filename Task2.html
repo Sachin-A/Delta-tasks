@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+      <head>
+          <script type="text/javascript">
+              var data=[]; 
+              function grapher()
+                {
+                   var canvas=document.getElementById('canvas');
+                   var context=canvas.getContext('2d');
+                   
+                   data.push(document.getElementById('input').value);
+                   var width=50;
+                   var StartX=50;
+                   var End=200;
+                   context.clearRect(0, 0, canvas.width, canvas.height);
+                   
+                   for(var k=0;k<data.length;k++)
+                         { context.fillStyle='#' + ('00000' + (Math.random() * 16777216 << 0 ).toString(16)).substr(-6);
+                           var h=data[k];
+                           var max = Math.max.apply(Math, data);
+                           var x=(h/max)*(canvas.height)*80/100;
+                           context.fillRect(StartX, canvas.height-x, width, x);
+                           context.font = "bold 12px sans-serif";
+                           //context.textAlign = "center";
+                           context.fillText(data[k], StartX+20, canvas.height-x-10);
+                           StartX += width +10;
+                         }
+                 };
+              function orderit()
+                {
+                   data.sort(function(a, b){return a-b});
+                   var canvas=document.getElementById('canvas');
+                   var context=canvas.getContext('2d');
+                   var width=50;
+                   var StartX=50;
+                   var End=200;
+                   context.clearRect(0, 0, canvas.width, canvas.height);
+                   
+                   for(var k=0;k<data.length;k++)
+                         { context.fillStyle='#' + ('00000' + (Math.random() * 16777216 << 0 ).toString(16)).substr(-6);
+                           var h=data[k];
+                           var max = Math.max.apply(Math, data);
+                           var x=(h/max)*(canvas.height)*80/100;
+                           context.fillRect(StartX, canvas.height-x, width, x);
+                           context.font = "bold 12px sans-serif";
+                           context.fillText(data[k], StartX+20, canvas.height-x-10);
+                           StartX += width +10;
+                         }
+                 };
+
+          </script>
+       </head>
+       <body>
+             <h1>Bar Graph with User input</h1>
+             <canvas id="canvas" width="500" height="400"></canvas>
+             <form>
+              Enter value:<br>
+             <input type="text" id="input">
+             <br>
+             <button type="button" value="Submit" onclick = "grapher()">Submit!</button>
+             <button type="button" onclick = "orderit()">Ascending order!</button>
+             </form>
+        </body>
+</html>
